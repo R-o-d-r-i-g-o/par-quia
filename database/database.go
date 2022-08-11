@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"scheduler/configs"
-	"scheduler/database/model"
+	model "scheduler/database/entity"
 
 	"gorm.io/gorm"
 )
@@ -51,13 +51,16 @@ func StartDatabase() {
 
 func createDatabaseStringConfig() string {
 	databaseStringConfig := fmt.Sprintf(
-		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=%s&loc=%s",
 
 		configs.DBase.USER,
 		configs.DBase.PASSWORD,
 		configs.DBase.HOST,
 		configs.DBase.PORT,
 		configs.DBase.DB,
+
+		configs.Time.PARSE,
+		configs.Time.LOCATION,
 	)
 
 	return databaseStringConfig

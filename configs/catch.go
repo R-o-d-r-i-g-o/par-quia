@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"reflect"
-	"scheduler/constants"
+	"scheduler/library"
 	"scheduler/util"
 
 	"github.com/joho/godotenv"
@@ -31,6 +31,6 @@ func loadStructWithEnvVars(configStructure interface{}) {
 
 func loadEnvFile() {
 	if err := godotenv.Load(".env"); err != nil {
-		panic(constants.FAIL_LOAD_ENV)
+		panic(library.FAIL_LOAD_ENV)
 	}
 }

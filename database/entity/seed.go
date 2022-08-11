@@ -1,7 +1,7 @@
 package model
 
 import (
-	"scheduler/constants"
+	"scheduler/library"
 
 	"gorm.io/gorm"
 )
@@ -19,8 +19,8 @@ func populateTableOccupation(db *gorm.DB) {
 	}
 
 	for _, occupation := range occupations {
-		if err := db.Table(constants.TB_OCCUPATION).Find(&occupation).Error; err != nil {
-			db.Table(constants.TB_OCCUPATION).Create(occupation)
+		if err := db.Table(library.TB_OCCUPATION).Find(&occupation).Error; err != nil {
+			db.Table(library.TB_OCCUPATION).Create(occupation)
 		}
 	}
 }

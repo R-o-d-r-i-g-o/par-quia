@@ -1,4 +1,4 @@
-package constants
+package library
 
 const (
 
@@ -14,7 +14,4 @@ const (
 	TB_DAILY_DUTY      = "tb_daily_duty"
 	TB_DAY_SCHEDULE    = "tb_day_schedule"
 	TB_GROUP           = "tb_duty_group"
-
-	// Mock error mensages
-	FAIL_LOAD_ENV = "The file (.env) hasn't been loaded."
 )

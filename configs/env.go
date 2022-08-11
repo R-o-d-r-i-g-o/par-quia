@@ -3,6 +3,7 @@ package configs
 var (
 	DBase  DBaseConfig
 	Server ServerConfig
+	Time   TimeConfig
 )
 
 type DBaseConfig struct {
@@ -18,8 +19,14 @@ type ServerConfig struct {
 	HOST string `env:"SERVER_HOST"`
 }
 
+type TimeConfig struct {
+	PARSE    string `env:"PARSE_TIME"`
+	LOCATION string `env:"LOCATION"`
+}
+
 func Load() {
 
 	loadStructWithEnvVars(&DBase)
 	loadStructWithEnvVars(&Server)
+	loadStructWithEnvVars(&Time)
 }

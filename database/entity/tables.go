@@ -1,7 +1,7 @@
 package model
 
 import (
-	"scheduler/constants"
+	"scheduler/library"
 	"time"
 
 	"gorm.io/gorm"
@@ -24,7 +24,7 @@ type User struct {
 }
 
 func (User) TableName() string {
-	return constants.TB_USER
+	return library.TB_USER
 }
 
 // ---------------------------------< 02º Table >--------------------------------- \\
@@ -36,7 +36,7 @@ type Indisponibility struct {
 }
 
 func (Indisponibility) TableName() string {
-	return constants.TB_INDISPONIBILITY
+	return library.TB_INDISPONIBILITY
 }
 
 // ---------------------------------< 03º Table >--------------------------------- \\
@@ -48,7 +48,7 @@ type User_x_Pastor struct {
 }
 
 func (User_x_Pastor) TableName() string {
-	return constants.TB_USER_X_PASTOR
+	return library.TB_USER_X_PASTOR
 }
 
 // ---------------------------------< 04º Table >--------------------------------- \\
@@ -60,7 +60,7 @@ type Occupation struct {
 }
 
 func (Occupation) TableName() string {
-	return constants.TB_OCCUPATION
+	return library.TB_OCCUPATION
 }
 
 // ---------------------------------< 05º Table >--------------------------------- \\
@@ -77,7 +77,7 @@ type Pastor struct {
 }
 
 func (Pastor) TableName() string {
-	return constants.TB_PASTOR
+	return library.TB_PASTOR
 }
 
 // ---------------------------------< 06º Table >--------------------------------- \\
@@ -90,7 +90,7 @@ type PastorConfigs struct {
 }
 
 func (PastorConfigs) TableName() string {
-	return constants.TB_PASTOR_CONFIGS
+	return library.TB_PASTOR_CONFIGS
 }
 
 // ---------------------------------< 07º Table >--------------------------------- \\
@@ -104,14 +104,14 @@ type MonthSchedule struct {
 }
 
 func (MonthSchedule) TableName() string {
-	return constants.TB_MONTH_SCHEDULE
+	return library.TB_MONTH_SCHEDULE
 }
 
 // ---------------------------------< 08º Table >--------------------------------- \\
 
 type CelebrationDay struct {
 	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;                      primaryKey;    autoCreateTime:true"`
-	Hour         time.Time `json:"hour"            gorm:"column:hour;                                primaryKey"`
+	Hour         time.Time `json:"hour"            gorm:"column:hour;                                primaryKey;    autoCreateTime:false"`
 	WorkDay      bool      `json:"work_day"        gorm:"column:work_day"`
 	Solemnities  string    `json:"solemnities"     gorm:"column:solemnities"`
 	LastEditorId uint64    `json:"last_editor_id"  gorm:"column:last_editor_id"`
@@ -119,14 +119,14 @@ type CelebrationDay struct {
 }
 
 func (CelebrationDay) TableName() string {
-	return constants.TB_CELEBRATION_DAY
+	return library.TB_CELEBRATION_DAY
 }
 
 // ---------------------------------< 09º Table >--------------------------------- \\
 
 type DailyDuty struct {
 	YearMonthDay   time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey;    autoCreateTime:true"`
-	Hour           time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey"`
+	Hour           time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey;    autoCreateTime:false"`
 	PastorId       uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
 	NumOfMembers   uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
 	NumOfGroups    uint64      `json:"num_of_groups"   gorm:"column:num_of_groups"`
@@ -134,14 +134,14 @@ type DailyDuty struct {
 }
 
 func (DailyDuty) TableName() string {
-	return constants.TB_DAILY_DUTY
+	return library.TB_DAILY_DUTY
 }
 
 // ---------------------------------< 10º Table >--------------------------------- \\
 
 type DaySchedule struct {
 	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;  primaryKey;    autoCreateTime:true"`
-	Hour         time.Time `json:"hour"            gorm:"column:hour;            primaryKey"`
+	Hour         time.Time `json:"hour"            gorm:"column:hour;            primaryKey;    autoCreateTime:false"`
 	PastorId     uint64    `json:"pastor_id"       gorm:"column:pastor_id;       primaryKey"`
 	UserId       uint64    `json:"user_id"         gorm:"column:user_id"`
 	GroupId      uint64    `json:"group_id"        gorm:"column:group_id"`
@@ -149,7 +149,7 @@ type DaySchedule struct {
 }
 
 func (DaySchedule) TableName() string {
-	return constants.TB_DAY_SCHEDULE
+	return library.TB_DAY_SCHEDULE
 }
 
 // ---------------------------------< 11º Table >--------------------------------- \\
@@ -160,7 +160,7 @@ type Group struct {
 }
 
 func (Group) TableName() string {
-	return constants.TB_GROUP
+	return library.TB_GROUP
 }
 
 // -----------------------------< General Interface >----------------------------- \\

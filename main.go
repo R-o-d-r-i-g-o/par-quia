@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"scheduler/configs"
-	"scheduler/database"
-	"scheduler/database/model"
+	"time"
 	// "time"
 	// "scheduler/configs"
 	// "scheduler/router"
@@ -15,15 +15,23 @@ func init() {
 }
 
 func main() {
+	// database.StartDatabase()
+	// model.Handler(database.GetGormDB())
 
-	configs.Load()
-	database.StartDatabase()
-	model.Handler(database.GetGormDB())
+	fmt.Println(configs.Time)
 
-	// fmt.Println(configs.DBase)
+	currentTime := time.Now()
 
-	// currentTime := time.Now()
-	// fmt.Println(currentTime.Format("2006-1-2"))
+	format1 := "2006-01-02"
+	format2 := "2006-jan-02"
+
+	timeTest1, _ := time.Parse(format1, currentTime.Format("2006-01-02"))
+	timeTest2, _ := time.Parse(format2, currentTime.Format("2006-jan-02"))
+
+	fmt.Println(timeTest1)
+	fmt.Println(timeTest2)
+	fmt.Println(time.Hour.String())
+	fmt.Println(currentTime)
 
 	// r := gin.Default()
 
