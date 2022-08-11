@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"scheduler/configs"
 	// "time"
@@ -11,7 +12,7 @@ import (
 )
 
 func init() {
-	configs.LoadEnv()
+	configs.Load()
 }
 
 func main() {
@@ -30,8 +31,8 @@ func main() {
 
 	fmt.Println(configs.DBase)
 
-	// currentTime := time.Now()
-	// fmt.Println(currentTime.Format("2006-1-2"))
+	currentTime := time.Now()
+	fmt.Println(currentTime.Format("2006-1-2"))
 
 	// r := gin.Default()
 
