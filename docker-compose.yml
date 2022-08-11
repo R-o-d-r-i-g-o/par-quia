@@ -3,7 +3,7 @@ services:
   super-app-db:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: "${DATABASE}"
+      MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
     ports:
       - '${DB_PORT}:${DB_PORT}'
