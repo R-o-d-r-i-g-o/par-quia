@@ -1,6 +1,10 @@
 package user
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+
+	"scheduler/module/user/controller"
+)
 
 func AvaiableRoutes(users *gin.RouterGroup) {
 	users.GET("/", controller.Find)

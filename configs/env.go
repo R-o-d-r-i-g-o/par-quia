@@ -19,6 +19,7 @@ type ServerConfig struct {
 }
 
 func Load() {
+
 	loadStructWithEnvVars(&DBase)
 	loadStructWithEnvVars(&Server)
 }

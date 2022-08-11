@@ -1,17 +1,19 @@
 package controller
 
-func Find() {
+import "github.com/gin-gonic/gin"
+
+func Find(ctx *gin.Context) {
 
 }
 
-func Create() {
+func Create(ctx *gin.Context) {
 
 }
 
-func Update() {
+func Update(ctx *gin.Context) {
 
 }
 
-func Delete() {
+func Delete(ctx *gin.Context) {
 
 }

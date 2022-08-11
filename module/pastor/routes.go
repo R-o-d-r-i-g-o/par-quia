@@ -1,6 +1,10 @@
 package pastor
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+
+	"scheduler/module/pastor/controller"
+)
 
 func AvaiableRoutes(pastors *gin.RouterGroup) {
 	pastors.GET("/", controller.Find)

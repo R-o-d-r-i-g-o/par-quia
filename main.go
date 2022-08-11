@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"time"
-
 	"scheduler/configs"
+	"scheduler/database"
+	"scheduler/database/model"
 	// "time"
 	// "scheduler/configs"
 	// "scheduler/router"
@@ -17,22 +16,14 @@ func init() {
 
 func main() {
 
-	// getEnv := func(key string) {
-	//     val, ok := os.LookupEnv(key)
-	//     if !ok {
-	//         fmt.Printf("%s not set\n", key)
-	//     } else {
-	//         fmt.Printf("%s=%s\n", key, val)
-	//     }
-	// }
+	configs.Load()
+	database.StartDatabase()
+	model.Handler(database.GetGormDB())
 
-	// getEnv("EDITOR")
-	// getEnv("SHELL")
+	// fmt.Println(configs.DBase)
 
-	fmt.Println(configs.DBase)
-
-	currentTime := time.Now()
-	fmt.Println(currentTime.Format("2006-1-2"))
+	// currentTime := time.Now()
+	// fmt.Println(currentTime.Format("2006-1-2"))
 
 	// r := gin.Default()
 
