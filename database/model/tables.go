@@ -11,12 +11,12 @@ type DataBaseTables struct {
 // ---------------------------------< 01º Table >--------------------------------- \\
 
 type User struct {
-	Id       uint64            `json:"id"		 gorm:"column:id;			primaryKey"`
-	Name     string            `json:"name" 	 gorm:"column:name`
-	Email    string            `json:"email"	 gorm:"column:email`
-	Phone    int               `json:"phone"	 gorm:"column:phone`
+	Id       uint64            `json:"id"        gorm:"column:id;           primaryKey"`
+	Name     string            `json:"name"      gorm:"column:name`
+	Email    string            `json:"email"     gorm:"column:email`
+	Phone    int               `json:"phone"     gorm:"column:phone`
 	Password string            `json:"password"  gorm:"column:password`
-	Indisp   []Indisponibility `				 gorm:"foreignKey:user_id;	references:id"`
+	Indisp   []Indisponibility `                 gorm:"foreignKey:user_id;  references:id"`
 	Us_x_P   []User_x_Pastor   `                 gorm:"foreignKey:user_id;  references:id"`
 }
 
@@ -27,9 +27,9 @@ func (User) TableName() string {
 // ---------------------------------< 02º Table >--------------------------------- \\
 
 type Indisponibility struct {
-	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;		primaryKey"`
-	UserId       uint64    `json:"user_id" 		   gorm:"column:user_id;			primaryKey"`
-	NotPresent   bool      `json:"not_present" 	   gorm:"column:not_present"`
+	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;     primaryKey"`
+	UserId       uint64    `json:"user_id"         gorm:"column:user_id;            primaryKey"`
+	NotPresent   bool      `json:"not_present"     gorm:"column:not_present"`
 }
 
 func (Indisponibility) TableName() string {
@@ -39,8 +39,8 @@ func (Indisponibility) TableName() string {
 // ---------------------------------< 03º Table >--------------------------------- \\
 
 type User_x_Pastor struct {
-	UserId       uint64 `json:"id_user" 	   gorm:"column:user_id;			primaryKey"`
-	PastorId     uint64 `json:"id_pastor" 	   gorm:"column:pastor_id;			primaryKey"`
+	UserId       uint64 `json:"id_user"        gorm:"column:user_id;            primaryKey"`
+	PastorId     uint64 `json:"id_pastor"      gorm:"column:pastor_id;          primaryKey"`
 	OccupationId uint64 `json:"id_occupation"  gorm:"column:occupation_id"`
 }
 
@@ -63,8 +63,8 @@ func (Occupation) TableName() string {
 // ---------------------------------< 05º Table >--------------------------------- \\
 
 type Pastor struct {
-	Id           uint64          `json:"id"        	    gorm:"column:id;             primaryKey"`
-	Name         string          `json:"name" 		    gorm:"column:name"`
+	Id           uint64          `json:"id"             gorm:"column:id;             primaryKey"`
+	Name         string          `json:"name"           gorm:"column:name"`
 	Description  string          `json:"description"    gorm:"column:description"`
 	CreatorId    int             `json:"creator_id"     gorm:"column:creator_id"`
 	CreationDate int             `json:"creation_date"  gorm:"column:creation_date"`
@@ -80,9 +80,9 @@ func (Pastor) TableName() string {
 // ---------------------------------< 06º Table >--------------------------------- \\
 
 type PastorConfigs struct {
-	PastorId             uint64 `json:"pastor_id" 				gorm:"column:pastor_id;               primaryKey"`
-	OrderByExperience    bool   `json:"order_by_experience" 	gorm:"column:order_by_experience"`
-	OrderByGroup         bool   `json:"order_by_group" 			gorm:"column:order_by_group"`
+	PastorId             uint64 `json:"pastor_id"               gorm:"column:pastor_id;               primaryKey"`
+	OrderByExperience    bool   `json:"order_by_experience"     gorm:"column:order_by_experience"`
+	OrderByGroup         bool   `json:"order_by_group"          gorm:"column:order_by_group"`
 	ManualConfigInterval bool   `json:"manual_config_interval"  gorm:"column:manual_config_interval"`
 }
 
@@ -93,11 +93,11 @@ func (PastorConfigs) TableName() string {
 // ---------------------------------< 07º Table >--------------------------------- \\
 
 type MonthSchedule struct {
-	YearMonth      time.Time   `json:"year_month" 	     gorm:"column:year_month;         primaryKey"`
-	PastorId       uint64      `json:"pastor_id" 		 gorm:"column:pastor_id;          primaryKey"`
+	YearMonth      time.Time   `json:"year_month"        gorm:"column:year_month;         primaryKey"`
+	PastorId       uint64      `json:"pastor_id"         gorm:"column:pastor_id;          primaryKey"`
 	IntervalInDays uint64      `json:"interval_in_days"  gorm:"column:interval_in_days"`
-	Warning        string      `json:"warning"		     gorm:"column:warning"`
-	dailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id      references:id"`
+	Warning        string      `json:"warning"           gorm:"column:warning"`
+	dailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id       references:id"`
 }
 
 func (MonthSchedule) TableName() string {
@@ -108,9 +108,9 @@ func (MonthSchedule) TableName() string {
 
 type CelebrationDay struct {
 	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;                      primaryKey"`
-	Hour         time.Time `json:"hour"			   gorm:"column:hour;                                primaryKey"`
-	WorkDay      bool      `json:"work_day" 	   gorm:"column:work_day"`
-	Solemnities  string    `json:"solemnities"	   gorm:"column:solemnities"`
+	Hour         time.Time `json:"hour"            gorm:"column:hour;                                primaryKey"`
+	WorkDay      bool      `json:"work_day"        gorm:"column:work_day"`
+	Solemnities  string    `json:"solemnities"     gorm:"column:solemnities"`
 	LastEditorId uint64    `json:"last_editor_id"  gorm:"column:last_editor_id"`
 	SyncDutyDay  DailyDuty `                       gorm:"foreignKey:year_month_day; foreignKey:hour  references:year_month_day;references:hour"`
 }
@@ -122,12 +122,12 @@ func (CelebrationDay) TableName() string {
 // ---------------------------------< 09º Table >--------------------------------- \\
 
 type DailyDuty struct {
-	YearMonthDay time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                      primaryKey"`
-	Hour         time.Time   `json:"hour" 		     gorm:"column:hour;                                primaryKey"`
-	PastorId     uint64      `json:"pastor_id" 	     gorm:"column:pastor_id;                           primaryKey"`
+	YearMonthDay time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey"`
+	Hour         time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey"`
+	PastorId     uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
 	NumOfMembers uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
 	NumOfGroups  uint64      `json:"num_of_groups"   gorm:"column:num_of_groups"`
-	SyncDaySch   DaySchedule `                       gorm:"foreignKey:year_month_day; foreignKey:hour  references:year_month_day;references:hour"`
+	SyncDaySch   DaySchedule `                       gorm:"foreignKey:year_month_day; foreignKey:hour; foreignKey:hour  references:year_month_day; references:hour; references:pastor_id"`
 }
 
 func (DailyDuty) TableName() string {
@@ -137,12 +137,12 @@ func (DailyDuty) TableName() string {
 // ---------------------------------< 10º Table >--------------------------------- \\
 
 type DaySchedule struct {
-	YearMonthDay time.Time   `json:"year_month_day"  gorm:"column:year_month_day;  primaryKey"`
-	Hour         time.Time   `json:"hour" 		     gorm:"column:hour;            primaryKey"`
-	PastorId     uint64      `json:"pastor_id" 	     gorm:"column:pastor_id;       primaryKey"`
-	UserId       uint64      `json:"user_id" 	     gorm:"column:user_id"`
-	GroupId      uint64      `json:"group_id" 	     gorm:"column:group_id"`
-	membGroup    []DutyGroup `                       gorm:"foreignKey:group_id;    references:group_id"`
+	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;  primaryKey"`
+	Hour         time.Time `json:"hour"            gorm:"column:hour;            primaryKey"`
+	PastorId     uint64    `json:"pastor_id"       gorm:"column:pastor_id;       primaryKey"`
+	UserId       uint64    `json:"user_id"         gorm:"column:user_id"`
+	GroupId      uint64    `json:"group_id"        gorm:"column:group_id"`
+	membGroup    []Group   `                       gorm:"foreignKey:id;          references:group_id"`
 }
 
 func (DaySchedule) TableName() string {
@@ -151,13 +151,13 @@ func (DaySchedule) TableName() string {
 
 // ---------------------------------< 11º Table >--------------------------------- \\
 
-type DutyGroup struct {
-	GroupId uint64 `json:"group_id"  gorm:"column:group_id;  primaryKey"`
-	UserId  uint64 `json:"user_id" 	 gorm:"column:user_id"`
+type Group struct {
+	Id     uint64 `json:"id"        gorm:"column:id;        primaryKey"`
+	UserId uint64 `json:"user_id"   gorm:"column:user_id"`
 }
 
-func (DutyGroup) TableName() string {
-	return constants.TB_DUTY_GROUP
+func (Group) TableName() string {
+	return constants.TB_GROUP
 }
 
 // -----------------------------< General Interface >----------------------------- \\

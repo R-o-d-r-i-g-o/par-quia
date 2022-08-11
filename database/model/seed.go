@@ -1,7 +1,7 @@
 package model
 
 import (
-	"transaction/library"
+	"scheduler/constants"
 
 	"gorm.io/gorm"
 )
@@ -9,7 +9,6 @@ import (
 func Handler(db *gorm.DB) {
 
 	populateTableOccupation(db)
-	// populateStatusData(db)
 }
 
 func populateTableOccupation(db *gorm.DB) {
@@ -20,8 +19,8 @@ func populateTableOccupation(db *gorm.DB) {
 	}
 
 	for _, occupation := range occupations {
-		if err := db.Table(library.TB_CATEGORIES).Find(&occupation).Error; err != nil {
-			db.Table(library.TB_CATEGORIES).Create(occupation)
+		if err := db.Table(constants.TB_OCCUPATION).Find(&occupation).Error; err != nil {
+			db.Table(constants.TB_OCCUPATION).Create(occupation)
 		}
 	}
 }
