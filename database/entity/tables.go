@@ -36,9 +36,10 @@ func (Indisponibility) TableName() string {
 // ---------------------------------< 03º Table >--------------------------------- \\
 
 type User_x_Pastor struct {
-	UserId       uint64 `json:"id_user"        gorm:"column:user_id;            primaryKey"`
-	PastorId     uint64 `json:"id_pastor"      gorm:"column:pastor_id;          primaryKey"`
-	OccupationId uint64 `json:"id_occupation"  gorm:"column:occupation_id"`
+	UserId       uint64 `json:"user_id"        gorm:"column:user_id;            primaryKey"`
+	PastorId     uint64 `json:"pastor_id"      gorm:"column:pastor_id;          primaryKey"`
+	OccupationId uint64 `json:"occupation_id"  gorm:"column:occupation_id"`
+	// Occupation   Occupation `                      gorm:"foreignKey:id;             references:occupation_id"`
 }
 
 func (User_x_Pastor) TableName() string {

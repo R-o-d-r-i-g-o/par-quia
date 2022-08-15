@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"scheduler/configs"
+	"scheduler/database"
+	model "scheduler/database/entity"
 	"time"
 	// "time"
 	// "scheduler/configs"
@@ -15,10 +17,10 @@ func init() {
 }
 
 func main() {
-	// database.StartDatabase()
-	// model.Handler(database.GetGormDB())
+	database.StartDatabase()
+	model.Handler(database.GetGormDB())
 
-	fmt.Println(configs.Time)
+	// fmt.Println(configs.Time)
 
 	currentTime := time.Now()
 
@@ -35,7 +37,7 @@ func main() {
 
 	// router.Avaible(r)
 
-	// r.Run(fmt.Sprintf("configs.Server.HOST:configs.Server.PORT"))
+	// r.Run(configs.Server.HOST + ":" + configs.Server.PORT)
 
 }
 
