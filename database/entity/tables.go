@@ -3,13 +3,7 @@ package model
 import (
 	"scheduler/library"
 	"time"
-
-	"gorm.io/gorm"
 )
-
-type DataBaseTables struct {
-	gorm.Model
-}
 
 // ---------------------------------< 01º Table >--------------------------------- \\
 
