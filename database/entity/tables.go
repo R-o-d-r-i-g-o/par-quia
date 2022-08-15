@@ -94,7 +94,7 @@ type MonthSchedule struct {
 	PastorId       uint64      `json:"pastor_id"         gorm:"column:pastor_id;          primaryKey"`
 	IntervalInDays uint64      `json:"interval_in_days"  gorm:"column:interval_in_days"`
 	Warning        string      `json:"warning"           gorm:"column:warning"`
-	DailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id       references:pastor_id"`
+	DailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id;      references:pastor_id"`
 }
 
 func (MonthSchedule) TableName() string {
@@ -119,12 +119,12 @@ func (CelebrationDay) TableName() string {
 // ---------------------------------< 09º Table >--------------------------------- \\
 
 type DailyDuty struct {
-	YearMonthDay   time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey;    autoCreateTime:false"`
-	Hour           time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey;    autoCreateTime:false"`
-	PastorId       uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
-	NumOfMembers   uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
-	NumOfGroups    uint64      `json:"num_of_groups"   gorm:"column:num_of_groups"`
-	SyncDaySchDep1 DaySchedule `                       gorm:"foreignKey:year_month_day; references:year_month_day; foreignKey:hour; references:hour; foreignKey:pastor_id; references:pastor_id"`
+	YearMonthDay time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey;    autoCreateTime:false"`
+	Hour         time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey;    autoCreateTime:false"`
+	PastorId     uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
+	NumOfMembers uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
+	NumOfGroups  uint64      `json:"num_of_groups"   gorm:"column:num_of_groups"`
+	SyncDaySch   DaySchedule `                       gorm:"foreignKey:year_month_day; references:year_month_day; foreignKey:hour; references:hour; foreignKey:pastor_id; references:pastor_id"`
 }
 
 func (DailyDuty) TableName() string {
