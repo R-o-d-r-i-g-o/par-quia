@@ -130,7 +130,7 @@ type DailyDuty struct {
 	PastorId       uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
 	NumOfMembers   uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
 	NumOfGroups    uint64      `json:"num_of_groups"   gorm:"column:num_of_groups"`
-	SyncDaySchDep1 DaySchedule `                       gorm:"foreignKey:year_month_day; references:year_month_day; foreignKey:hour; references:hour; foreignKey:pastor_id;    references:pastor_id"`
+	SyncDaySchDep1 DaySchedule `                       gorm:"foreignKey:year_month_day; references:year_month_day; foreignKey:hour; references:hour; foreignKey:pastor_id; references:pastor_id"`
 }
 
 func (DailyDuty) TableName() string {

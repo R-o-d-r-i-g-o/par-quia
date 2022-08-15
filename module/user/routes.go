@@ -7,8 +7,8 @@ import (
 )
 
 func AvaiableRoutes(users *gin.RouterGroup) {
-	users.GET("/", controller.Find)
-	users.POST("/", controller.Create)
-	users.PATCH("/", controller.Update)
-	users.DELETE("/", controller.Delete)
+	users.GET("/Log-in", controller.Find)
+	users.POST("/Sign-up", controller.Create)
+	users.PATCH("/Profile", controller.Update)
+	users.DELETE("/Profile", controller.Delete)
 }
