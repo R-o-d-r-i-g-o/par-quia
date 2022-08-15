@@ -23,15 +23,13 @@ func main() {
 	currentTime := time.Now()
 
 	format1 := "2006-01-02"
-	// format2 := "0000-00-00"
+	format2 := "15:04:05"
 
 	timeTest1, _ := time.Parse(format1, currentTime.Format("2006-01-02"))
-	// timeTest2, _ := time.Parse(format2, currentTime.Format("2006-jan-02"))
+	timeTest2, _ := time.Parse(format2, currentTime.Format("15:04:05"))
 
 	fmt.Println(timeTest1)
-	// fmt.Println(timeTest2)
-	// fmt.Println(currentTime.Format("2006-jan-02"))
-	// fmt.Println(currentTime)
+	fmt.Println(timeTest2)
 
 	// r := gin.Default()
 

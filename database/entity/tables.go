@@ -24,7 +24,7 @@ func (User) TableName() string {
 // ---------------------------------< 02º Table >--------------------------------- \\
 
 type Indisponibility struct {
-	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;     primaryKey;    autoCreateTime:true"`
+	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;     primaryKey;    autoCreateTime:false"`
 	UserId       uint64    `json:"user_id"         gorm:"column:user_id;            primaryKey"`
 	NotPresent   bool      `json:"not_present"     gorm:"column:not_present"`
 }
@@ -90,7 +90,7 @@ func (PastorConfigs) TableName() string {
 // ---------------------------------< 07º Table >--------------------------------- \\
 
 type MonthSchedule struct {
-	YearMonth      time.Time   `json:"year_month"        gorm:"column:year_month;         primaryKey;      autoCreateTime:true"`
+	YearMonth      time.Time   `json:"year_month"        gorm:"column:year_month;         primaryKey;      autoCreateTime:false"`
 	PastorId       uint64      `json:"pastor_id"         gorm:"column:pastor_id;          primaryKey"`
 	IntervalInDays uint64      `json:"interval_in_days"  gorm:"column:interval_in_days"`
 	Warning        string      `json:"warning"           gorm:"column:warning"`
@@ -104,7 +104,7 @@ func (MonthSchedule) TableName() string {
 // ---------------------------------< 08º Table >--------------------------------- \\
 
 type CelebrationDay struct {
-	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;                      primaryKey;    autoCreateTime:true"`
+	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;                      primaryKey;    autoCreateTime:false"`
 	Hour         time.Time `json:"hour"            gorm:"column:hour;                                primaryKey;    autoCreateTime:false"`
 	WorkDay      bool      `json:"work_day"        gorm:"column:work_day"`
 	Solemnities  string    `json:"solemnities"     gorm:"column:solemnities"`
@@ -119,7 +119,7 @@ func (CelebrationDay) TableName() string {
 // ---------------------------------< 09º Table >--------------------------------- \\
 
 type DailyDuty struct {
-	YearMonthDay   time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey;    autoCreateTime:true"`
+	YearMonthDay   time.Time   `json:"year_month_day"  gorm:"column:year_month_day;                                       primaryKey;    autoCreateTime:false"`
 	Hour           time.Time   `json:"hour"            gorm:"column:hour;                                                 primaryKey;    autoCreateTime:false"`
 	PastorId       uint64      `json:"pastor_id"       gorm:"column:pastor_id;                                            primaryKey"`
 	NumOfMembers   uint64      `json:"num_of_members"  gorm:"column:num_of_members"`
@@ -134,7 +134,7 @@ func (DailyDuty) TableName() string {
 // ---------------------------------< 10º Table >--------------------------------- \\
 
 type DaySchedule struct {
-	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;  primaryKey;    autoCreateTime:true"`
+	YearMonthDay time.Time `json:"year_month_day"  gorm:"column:year_month_day;  primaryKey;    autoCreateTime:false"`
 	Hour         time.Time `json:"hour"            gorm:"column:hour;            primaryKey;    autoCreateTime:false"`
 	PastorId     uint64    `json:"pastor_id"       gorm:"column:pastor_id;       primaryKey"`
 	UserId       uint64    `json:"user_id"         gorm:"column:user_id"`
