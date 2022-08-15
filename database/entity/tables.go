@@ -94,7 +94,7 @@ type MonthSchedule struct {
 	PastorId       uint64      `json:"pastor_id"         gorm:"column:pastor_id;          primaryKey"`
 	IntervalInDays uint64      `json:"interval_in_days"  gorm:"column:interval_in_days"`
 	Warning        string      `json:"warning"           gorm:"column:warning"`
-	DailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id       references:id"`
+	DailyDusty     []DailyDuty `                         gorm:"foreignKey:pastor_id       references:pastor_id"`
 }
 
 func (MonthSchedule) TableName() string {
