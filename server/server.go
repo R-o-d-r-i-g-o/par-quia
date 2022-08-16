@@ -20,12 +20,11 @@ func CreateServer() *Server {
 }
 
 func NewServer() *Server {
-	newServer := &Server{
+	return &Server{
 		host:         "",
 		port:         "",
 		serverEngine: gin.Default(),
 	}
-	return newServer
 }
 
 // ---------------------------------< Methods >--------------------------------- \\

@@ -5,6 +5,8 @@ import (
 	"scheduler/configs"
 	"scheduler/database"
 	model "scheduler/database/entity"
+	"scheduler/router"
+	"scheduler/server"
 	"time"
 	// "time"
 	// "scheduler/configs"
@@ -13,32 +15,34 @@ import (
 )
 
 func init() {
+
 	configs.Load()
+	database.StartDatabase()
+	model.Handler(database.GetGormDB())
 }
 
 func main() {
-	database.StartDatabase()
-	model.Handler(database.GetGormDB())
 
-	// fmt.Println(configs.Time)
+	currentServer := server.CreateServer()
+	router.Avaible(currentServer.GetServerEngine())
+	currentServer.GetServerEngine().Run(
+
+		configs.Server.HOST + ":" +
+			configs.DBase.PORT,
+	)
 
 	currentTime := time.Now()
 
 	format1 := "2006-01-02"
 	format2 := "15:04:05"
 
-	timeTest1, _ := time.Parse(format1, currentTime.Format("2006-01-02"))
-	timeTest2, _ := time.Parse(format2, currentTime.Format("15:04:05"))
+	timeTest1, _ := time.Parse(format1, currentTime.Format(format1))
+	timeTest2, _ := time.Parse(format2, currentTime.Format(format2))
 
+	fmt.Println(currentTime.Format("2006-01-02"))
+	fmt.Println(currentTime.Format("15:04:05"))
 	fmt.Println(timeTest1)
 	fmt.Println(timeTest2)
-
-	// r := gin.Default()
-
-	// router.Avaible(r)
-
-	// r.Run(configs.Server.HOST + ":" + configs.Server.PORT)
-
 }
 
 // 01   -> month with zero prefix
