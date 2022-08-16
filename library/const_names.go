@@ -13,5 +13,5 @@ const (
 	TB_CELEBRATION_DAY = "tb_celebration_day"
 	TB_DAILY_DUTY      = "tb_daily_duty"
 	TB_DAY_SCHEDULE    = "tb_day_schedule"
-	TB_GROUP           = "tb_duty_group"
+	TB_GROUP           = "tb_group"
 )

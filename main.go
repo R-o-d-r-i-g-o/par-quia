@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"scheduler/configs"
-	"scheduler/database"
-	model "scheduler/database/entity"
 	"scheduler/router"
 	"scheduler/server"
+
+	"scheduler/database"
+	model "scheduler/database/entity"
 	"time"
 	// "time"
 	// "scheduler/configs"
@@ -28,7 +29,7 @@ func main() {
 	currentServer.GetServerEngine().Run(
 
 		configs.Server.HOST + ":" +
-			configs.DBase.PORT,
+			configs.Server.PORT,
 	)
 
 	currentTime := time.Now()

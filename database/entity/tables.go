@@ -68,7 +68,7 @@ type Pastor struct {
 	CreationDate int             `json:"creation_date"  gorm:"column:creation_date"`
 	Us_x_P       []User_x_Pastor `                      gorm:"foreignKey:pastor_id;  references:id"`
 	Month_sch    []MonthSchedule `                      gorm:"foreignKey:pastor_id;  references:id"`
-	P_configs    PastorConfigs   `                      gorm:"foreignKey:pastor_id"`
+	P_configs    PastorConfigs   `                      gorm:"foreignKey:pastor_id;  references:id"`
 }
 
 func (Pastor) TableName() string {
