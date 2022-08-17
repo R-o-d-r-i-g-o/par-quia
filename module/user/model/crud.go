@@ -2,7 +2,7 @@ package model
 
 import (
 	db "scheduler/database"
-	"scheduler/module"
+	"scheduler/database/model"
 )
 
 type IUserReferences interface {
@@ -14,8 +14,8 @@ type IUserReferences interface {
 
 type UserReferences struct {
 	IUserReferences
-	User  *module.User
-	Users *[]module.User
+	User  *model.User
+	Users *[]model.User
 }
 
 func (u *UserReferences) Find() (err error) {
