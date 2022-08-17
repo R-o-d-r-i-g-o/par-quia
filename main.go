@@ -9,10 +9,6 @@ import (
 	"scheduler/database"
 	model "scheduler/database/entity"
 	"time"
-	// "time"
-	// "scheduler/configs"
-	// "scheduler/router"
-	// "github.com/gin-gonic/gin"
 )
 
 func init() {
