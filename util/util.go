@@ -2,8 +2,11 @@ package util
 
 import (
 	"encoding/json"
+	"net/http"
 	"regexp"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 func ParseMapToJson(mp map[string]string) string {
@@ -30,4 +33,16 @@ func LetOnlyNumbers(str string) string {
 func IsEmailValid(e string) bool {
 	emailRegex := regexp.MustCompile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`)
 	return emailRegex.MatchString(e)
+}
+
+// ----------------------------------------< Common status >---------------------------------------- \\
+
+func AcceptedOrNotStatusReturn(err error, c *gin.Context, obj interface{}) {
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Not Accepted": obj})
+
+	} else {
+		c.JSON(http.StatusOK, gin.H{"Accepted": obj})
+	}
 }
