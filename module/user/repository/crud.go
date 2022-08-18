@@ -29,11 +29,11 @@ func (u UserReferences) Create() (err error) {
 }
 
 func (u *UserReferences) Update() (err error) {
-	err = db.GetGormDB().Where("cpf_cnpj = ?", u.User).Updates(&u.User).Error
+	err = db.GetGormDB().Where("id = ?", u.User).Updates(&u.User).Error
 	return
 }
 
 func (u *UserReferences) Delete() (err error) {
-	err = db.GetGormDB().Where("cpf_cnpj = ?", u.User).Delete(&u.User).Error
+	err = db.GetGormDB().Where("id = ?", u.User).Delete(&u.User).Error
 	return
 }

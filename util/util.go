@@ -38,9 +38,8 @@ func IsEmailValid(e string) bool {
 // ----------------------------------------< Common status >---------------------------------------- \\
 
 func AcceptedOrNotStatusReturn(err error, c *gin.Context, obj interface{}) {
-
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Not Accepted": obj})
+		c.JSON(http.StatusBadRequest, gin.H{"Not Accepted! Something went wrong.": obj})
 
 	} else {
 		c.JSON(http.StatusOK, gin.H{"Accepted": obj})
