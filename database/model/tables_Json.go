@@ -10,14 +10,14 @@ type User struct {
 	Email    string            `json:"email"`
 	Phone    int               `json:"phone"`
 	Password string            `json:"password"`
-	Indisp   []Indisponibility `json:"Indisponibility"`
-	Us_x_P   []User_x_Pastor   `json:"User_x_Pastor"`
+	Indisp   []Indisponibility `json:"Indisponibility ,omitempty"`
+	Us_x_P   []User_x_Pastor   `json:"User_x_Pastor   ,omitempty"`
 }
 
 type Indisponibility struct {
 	YearMonthDay time.Time `json:"year_month_day"`
 	UserId       uint64    `json:"user_id"`
-	NotPresent   bool      `json:"not_present"`
+	NotPresent   bool      `json:"not_present     ,omitempty"`
 }
 
 type User_x_Pastor struct {
@@ -29,7 +29,7 @@ type User_x_Pastor struct {
 type Occupation struct {
 	Id     uint64        `json:"id"`
 	Name   string        `json:"name"`
-	Us_x_P User_x_Pastor `json:"User_x_Pastor"`
+	Us_x_P User_x_Pastor `json:"User_x_Pastor   ,omitempty"`
 }
 
 type Pastor struct {
@@ -38,8 +38,8 @@ type Pastor struct {
 	Description  string          `json:"description"`
 	CreatorId    int             `json:"creator_id"`
 	CreationDate int             `json:"creation_date"`
-	Us_x_P       []User_x_Pastor `json:"User_x_Pastor"`
-	Month_sch    []MonthSchedule `json:"MonthSchedule"`
+	Us_x_P       []User_x_Pastor `json:"User_x_Pastor  ,omitempty"`
+	Month_sch    []MonthSchedule `json:"MonthSchedule  ,omitempty"`
 	P_configs    PastorConfigs   `json:"PastorConfigs"`
 }
 
@@ -55,7 +55,7 @@ type MonthSchedule struct {
 	PastorId       uint64      `json:"pastor_id"`
 	IntervalInDays uint64      `json:"interval_in_days"`
 	Warning        string      `json:"warning"`
-	DailyDusty     []DailyDuty `json:"DailyDuty"`
+	DailyDusty     []DailyDuty `json:"DailyDuty          ,omitempty"`
 }
 
 type CelebrationDay struct {
@@ -64,7 +64,7 @@ type CelebrationDay struct {
 	WorkDay      bool      `json:"work_day"`
 	Solemnities  string    `json:"solemnities"`
 	LastEditorId uint64    `json:"last_editor_id"`
-	SyncDutyDay  DailyDuty `json:"DailyDuty"`
+	SyncDutyDay  DailyDuty `json:"DailyDuty           ,omitempty"`
 }
 
 type DailyDuty struct {
@@ -73,7 +73,7 @@ type DailyDuty struct {
 	PastorId     uint64      `json:"pastor_id"`
 	NumOfMembers uint64      `json:"num_of_members"`
 	NumOfGroups  uint64      `json:"num_of_groups"`
-	SyncDaySch   DaySchedule `json:"DaySchedule"`
+	SyncDaySch   DaySchedule `json:"DaySchedule       ,omitempty"`
 }
 
 type DaySchedule struct {
@@ -82,7 +82,7 @@ type DaySchedule struct {
 	PastorId     uint64    `json:"pastor_id"`
 	UserId       uint64    `json:"user_id"`
 	GroupId      uint64    `json:"group_id"`
-	MembGroup    []Group   `json:"Group"`
+	MembGroup    []Group   `json:"Group         ,omitempty"`
 }
 
 type Group struct {
