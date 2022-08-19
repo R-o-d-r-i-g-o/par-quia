@@ -14,20 +14,21 @@ var (
 
 	tables = func(db *gorm.DB) error {
 		return db.AutoMigrate(
+
 			// THERE'RE NOT external dependences (foreign keys)
+			&model.User{},
 			&model.Indisponibility{},
+			&model.Pastor{},
 			&model.PastorConfigs{},
+			&model.Occupation{},
 			&model.User_x_Pastor{},
+			&model.CelebrationDay{},
+			&model.MonthSchedule{},
+			&model.DailyDuty{},
 			&model.Group{},
+			&model.DaySchedule{},
 
 			// THERE'RE external dependences (foreign keys)
-			&model.User{},
-			&model.Pastor{},
-			&model.Occupation{},
-			&model.DaySchedule{},
-			&model.DailyDuty{},
-			&model.MonthSchedule{},
-			&model.CelebrationDay{},
 		)
 	}
 )
