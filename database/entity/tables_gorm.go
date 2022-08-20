@@ -28,10 +28,10 @@ func (User) TableName() string {
 // ---------------------------------< 02º Table >--------------------------------- \\
 
 type Indisponibility struct {
-	YearMonthDay time.Time      `gorm:"column:year_month_day;     primaryKey;    autoCreateTime:false"`
-	UserId       uint64         `gorm:"column:user_id;            primaryKey"`
-	NotPresent   bool           `gorm:"column:not_present"`
-	DeletedAt    gorm.DeletedAt `gorm:"index"`
+	Calendar   time.Time      `gorm:"column:calendar;           primaryKey;    autoCreateTime:false"`
+	UserId     uint64         `gorm:"column:user_id;            primaryKey"`
+	NotPresent bool           `gorm:"column:not_present"`
+	DeletedAt  gorm.DeletedAt `gorm:"index"`
 }
 
 func (Indisponibility) TableName() string {
@@ -44,6 +44,7 @@ type User_x_Pastor struct {
 	UserId       uint64         `gorm:"column:user_id;            primaryKey"`
 	PastorId     uint64         `gorm:"column:pastor_id;          primaryKey"`
 	OccupationId uint64         `gorm:"column:occupation_id"`
+	CreatedAt    time.Time      `gorm:"column:created_at"`
 	DeletedAt    gorm.DeletedAt `gorm:"index"`
 }
 
@@ -90,6 +91,7 @@ type PastorConfigs struct {
 	OrderByExperience    bool           `gorm:"column:order_by_experience"`
 	OrderByGroup         bool           `gorm:"column:order_by_group"`
 	ManualConfigInterval bool           `gorm:"column:manual_config_interval"`
+	UpdatedAt            time.Time      `gorm:"column:updated_at"`
 	DeletedAt            gorm.DeletedAt `gorm:"index"`
 }
 
@@ -121,6 +123,7 @@ type CelebrationDay struct {
 	Solemnities  string         `gorm:"column:solemnities"`
 	LastEditorId uint64         `gorm:"column:last_editor_id"`
 	SyncDutyDay  DailyDuty      `gorm:"foreignKey:calendar;       references:calendar"`
+	UpdatedAt    time.Time      `gorm:"column:updated_at"`
 	DeletedAt    gorm.DeletedAt `gorm:"index"`
 }
 
@@ -163,6 +166,7 @@ type Group struct {
 	Id        uint64         `gorm:"column:id;              primaryKey"`
 	UserId    uint64         `gorm:"column:user_id"`
 	DaySch    []DaySchedule  `gorm:"foreignKey:group_id;    references:id"`
+	UpdatedAt time.Time      `gorm:"column:updated_at"`
 	DeletedAt gorm.DeletedAt `gorm:"index"`
 }
 
