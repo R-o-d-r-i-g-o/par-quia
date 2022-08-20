@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/rodrigo/Documents/paróquia'
+echo "\033[33m" Running Tidy..."\033[37m"
+go mod tidy
+echo "--------------------------------------------"
+echo "\033[33m" Running Vendor..."\033[37m"
+go mod vendor
+echo "--------------------------------------------"
+echo "\033[32m" DONE
+make: Leaving directory '/home/rodrigo/Documents/paróquia'
+ 
