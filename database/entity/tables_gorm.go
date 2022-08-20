@@ -17,6 +17,7 @@ type User struct {
 	Password  string            `gorm:"column:password"`
 	Indisp    []Indisponibility `gorm:"foreignKey:user_id;  references:id"`
 	Us_x_P    []User_x_Pastor   `gorm:"foreignKey:user_id;  references:id"`
+	CreatedAt time.Time         `gorm:"column:created_at;   autoCreateTime:true"`
 	DeletedAt gorm.DeletedAt    `gorm:"index"`
 }
 
@@ -56,6 +57,7 @@ type Occupation struct {
 	Id        uint64         `gorm:"column:id;                 primaryKey"`
 	Name      string         `gorm:"column:name"`
 	Us_x_P    User_x_Pastor  `gorm:"foreignKey:occupation_id;  references:id"`
+	CreatedAt time.Time      `gorm:"column:created_at;         autoCreateTime:true"`
 	DeletedAt gorm.DeletedAt `gorm:"index"`
 }
 
@@ -66,15 +68,15 @@ func (Occupation) TableName() string {
 // ---------------------------------< 05º Table >--------------------------------- \\
 
 type Pastor struct {
-	Id           uint64          `gorm:"column:id;             primaryKey"`
-	Name         string          `gorm:"column:name"`
-	Description  string          `gorm:"column:description"`
-	CreatorId    int             `gorm:"column:creator_id"`
-	CreationDate int             `gorm:"column:creation_date"`
-	Us_x_P       []User_x_Pastor `gorm:"foreignKey:pastor_id;  references:id"`
-	Month_sch    []MonthSchedule `gorm:"foreignKey:pastor_id;  references:id"`
-	P_configs    PastorConfigs   `gorm:"foreignKey:pastor_id;  references:id"`
-	DeletedAt    gorm.DeletedAt  `gorm:"index"`
+	Id          uint64          `gorm:"column:id;             primaryKey"`
+	Name        string          `gorm:"column:name"`
+	Description string          `gorm:"column:description"`
+	CreatorId   int             `gorm:"column:creator_id"`
+	Us_x_P      []User_x_Pastor `gorm:"foreignKey:pastor_id;  references:id"`
+	Month_sch   []MonthSchedule `gorm:"foreignKey:pastor_id;  references:id"`
+	P_configs   PastorConfigs   `gorm:"foreignKey:pastor_id;  references:id"`
+	CreatedAt   time.Time       `gorm:"column:created_at;     autoCreateTime:true"`
+	DeletedAt   gorm.DeletedAt  `gorm:"index"`
 }
 
 func (Pastor) TableName() string {
@@ -103,6 +105,7 @@ type MonthSchedule struct {
 	IntervalInDays uint64         `gorm:"column:interval_in_days"`
 	Warning        string         `gorm:"column:warning"`
 	DailyDuty      []DailyDuty    `gorm:"foreignKey:pastor_id;      references:pastor_id"`
+	CreatedAt      time.Time      `gorm:"column:created_at;         autoCreateTime:true"`
 	DeletedAt      gorm.DeletedAt `gorm:"index"`
 }
 
