@@ -1,4 +1,4 @@
-package controller
+package pastor
 
 import "github.com/gin-gonic/gin"
 

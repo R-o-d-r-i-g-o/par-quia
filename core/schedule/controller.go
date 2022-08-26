@@ -1,4 +1,4 @@
-package controller
+package schedule
 
 import "github.com/gin-gonic/gin"
 

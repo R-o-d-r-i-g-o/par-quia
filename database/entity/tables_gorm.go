@@ -102,7 +102,7 @@ func (PastorConfigs) TableName() string {
 // ---------------------------------< 07º Table >--------------------------------- \\
 
 type MonthSchedule struct {
-	YearMonth      time.Time      `gorm:"column:year_month;         primaryKey;      autoCreateTime:false"`
+	Name           string         `gorm:"column:name;               primaryKey"`
 	PastorId       uint64         `gorm:"column:pastor_id;          primaryKey"`
 	IntervalInDays uint64         `gorm:"column:interval_in_days"`
 	Warning        string         `gorm:"column:warning"`

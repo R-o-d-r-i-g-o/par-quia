@@ -1,11 +1,11 @@
-package router
+package api
 
 import (
-	"scheduler/module/event"
-	"scheduler/module/pastor"
-	"scheduler/module/schedule"
+	"scheduler/module/home/event"
+	"scheduler/module/home/pastor"
+	"scheduler/module/home/schedule"
+	"scheduler/module/home/user"
 	"scheduler/module/section"
-	"scheduler/module/user"
 
 	"github.com/gin-gonic/gin"
 )
